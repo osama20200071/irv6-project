@@ -1,0 +1,22 @@
+import { memo } from "react";
+
+const JANK_DELAY = 800;
+
+export default memo(function MarkdownPreview({ render, options }) {
+  const expensiveRender = () => {
+    const start = performance.now();
+    while (performance.now() - start < JANK_DELAY) {}
+    return null;
+  };
+  return (
+    <div className="markdown-preview-container">
+      <h1>Last Render: {Date.now()}</h1>
+      <div
+        className="markdown-preview"
+        dangerouslySetInnerHTML={{ __html: render(options.text) }}
+        style={{ color: options.theme }}
+      ></div>
+      {expensiveRender()}
+    </div>
+  );
+});

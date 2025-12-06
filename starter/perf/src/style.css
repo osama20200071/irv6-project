@@ -179,10 +179,17 @@ textarea:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
 .markdown > * {
   height: 400px;
   width: 50%;
   overflow: scroll;
+}
+
+.markdown-preview-container {
+  border: 2px solid #14d117;
+  border-radius: 5px;
 }
